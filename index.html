@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>伍跃龙的个人主页</title>
+  <title>伍跃龙的个人主页 | 数据科学与大数据技术</title>
   <style>
     * {
       margin: 0;
@@ -11,348 +11,1121 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #ff6b6b;
+      --text-color: #2c3e50;
+      --text-light: #6c757d;
+      --bg-light: #f8f9fa;
+      --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      --hover-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+    }
+
     body {
-      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 1200px;
+      font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+      line-height: 1.8;
+      color: var(--text-color);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px;
-      background-color: #f8f9fa;
     }
 
-    header {
-      text-align: center;
+    /* 头部横幅 */
+    .hero-header {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 50px 40px;
       margin-bottom: 30px;
-      padding: 20px;
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      color: #2c3e50;
-      margin: 25px 0 15px;
-      padding-bottom: 10px;
-      border-bottom: 3px solid #3498db;
-    }
-
-    h2 {
-      color: #34495e;
-      margin: 20px 0 10px;
-    }
-
-    .profile {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      margin: 30px 0;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .profile-img {
-      flex-shrink: 0;
-      width: 200px;
-      height: 270px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .profile-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .profile-img img:hover {
-      transform: scale(1.05);
-    }
-
-    .motto {
-      font-style: italic;
-      color: #e74c3c;
-      font-size: 1.2em;
+      box-shadow: var(--card-shadow);
       text-align: center;
-      margin: 20px 0;
-      padding: 15px;
-      background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-      border-left: 4px solid #e74c3c;
-      border-radius: 5px;
-    }
-
-    .skills, .plans {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 20px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    ul, ol {
-      padding-left: 20px;
-      margin: 10px 0;
-    }
-
-    li {
-      margin: 8px 0;
-      padding: 5px 0;
-    }
-
-    .website-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .website-links a {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #3498db;
-      color: white;
-      text-decoration: none;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-
-    .website-links a:hover {
-      background: #2980b9;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      background: white;
-      border-radius: 10px;
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    th, td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #e0e0e0;
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+      animation: heroGlow 15s ease-in-out infinite;
     }
 
-    th {
-      background: #3498db;
+    @keyframes heroGlow {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(20%, 20%) rotate(180deg); }
+    }
+
+    .hero-header h1 {
+      font-size: 2.8em;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2em;
+      color: var(--text-light);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      font-weight: bold;
+      padding: 8px 25px;
+      border-radius: 50px;
+      font-size: 0.9em;
+      margin-top: 15px;
+      position: relative;
+      z-index: 1;
     }
 
-    tr:hover {
-      background-color: #f5f5f5;
+    /* 个人简介卡片 */
+    .profile-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: var(--card-shadow);
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .contact-form {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .profile-card::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
     }
 
-    .form-group {
+    .profile-image-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-image {
+      width: 250px;
+      height: 333px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .profile-image:hover {
+      transform: scale(1.03) rotate(1deg);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .profile-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-name {
+      font-size: 2.2em;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .profile-intro {
+      color: var(--text-light);
+      font-size: 1.1em;
+      line-height: 1.9;
       margin-bottom: 20px;
     }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #2c3e50;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border: 2px solid #ddd;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #3498db;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    button {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    .motto-box {
+      background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
       color: white;
-      padding: 12px 30px;
-      border: none;
+      padding: 20px 30px;
+      border-radius: 15px;
+      font-size: 1.2em;
+      font-style: italic;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+    }
+
+    .motto-box::before {
+      content: '"';
+      font-size: 3em;
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      opacity: 0.3;
+      font-family: Georgia, serif;
+    }
+
+    /* 通用卡片样式 */
+    .section-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+      backdrop-filter: blur(10px);
       border-radius: 25px;
-      font-size: 16px;
-      font-weight: bold;
+      padding: 35px;
+      margin-bottom: 25px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+
+    .section-title {
+      font-size: 1.8em;
+      color: var(--text-color);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title .icon {
+      font-size: 1.2em;
+    }
+
+    /* 爱好按钮网格 */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .hobby-btn {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: none;
+      padding: 30px 20px;
+      border-radius: 20px;
       cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .hobby-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.25);
+    }
+
+    .hobby-btn:nth-child(1) { border-bottom: 4px solid #667eea; }
+    .hobby-btn:nth-child(2) { border-bottom: 4px solid #ff6b6b; }
+    .hobby-btn:nth-child(3) { border-bottom: 4px solid #feca57; }
+    .hobby-btn:nth-child(4) { border-bottom: 4px solid #48dbfb; }
+    .hobby-btn:nth-child(5) { border-bottom: 4px solid #1dd1a1; }
+
+    .hobby-icon {
+      font-size: 2.5em;
+    }
+
+    .hobby-name {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    /* 弹窗样式 */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+
+    .modal.show {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 25px;
+      padding: 40px;
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2em;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+
+    .modal-title {
+      font-size: 1.8em;
+      color: var(--text-color);
+      margin-bottom: 30px;
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .modal-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #f0f0f0;
+    }
+
+    .modal-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-img.video-thumb {
+      object-fit: cover;
+    }
+
+    .modal-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 20px;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .modal-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+    }
+
+    .link-icon {
+      font-size: 2em;
+      margin-right: 15px;
+    }
+
+    .link-text {
+      flex: 1;
+      font-size: 1.1em;
+      font-weight: 500;
+    }
+
+    .link-arrow {
+      font-size: 1.5em;
+      opacity: 0.8;
+    }
+
+    /* 学习计划时间线 */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 20px 25px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 15px;
+      margin-bottom: 20px;
       transition: all 0.3s ease;
     }
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    .timeline-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
     }
 
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -26px;
+      top: 28px;
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+    }
+
+    .timeline-number {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 0.9em;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .timeline-content {
+      display: inline;
+    }
+
+    .timeline-title {
+      font-size: 1.15em;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    /* 网站链接 */
+    .website-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .website-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 25px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 15px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .website-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .website-link:hover::before {
+      left: 100%;
+    }
+
+    .website-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.25);
+    }
+
+    .website-link:nth-child(1) { border-left: 4px solid #1677ff; }
+    .website-link:nth-child(2) { border-left:4px solid #fb7299; }
+    .website-link:nth-child(3) { border-left:4px solid #24292e; }
+
+    .website-icon {
+      font-size: 1.5em;
+    }
+
+    /* 联系信息 */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 25px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+    }
+
+    .contact-icon {
+      font-size: 2.5em;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 15px;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.9em;
+      color: var(--text-light);
+      margin-bottom: 5px;
+    }
+
+    .contact-value {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    /* 留言表单 */
+    .message-form {
+      display: grid;
+      gap: 25px;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--text-color);
+      font-size: 1.05em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 18px 25px;
+      border: 2px solid #e9ecef;
+      border-radius: 15px;
+      font-size: 1em;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 18px 50px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    /* 页脚 */
     footer {
       text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      color: #666;
-      border-top: 1px solid #ddd;
+      padding: 35px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1em;
+      margin-top: 20px;
     }
 
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式设计 */
     @media (max-width: 768px) {
-      .profile {
-        flex-direction: column;
+      .hero-header {
+        padding: 35px 25px;
+      }
+
+      .hero-header h1 {
+        font-size: 2em;
+      }
+
+      .profile-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 266px;
+        margin: 0 auto;
+      }
+
+      .profile-content {
         text-align: center;
       }
 
-      .profile-img {
-        width: 180px;
-        height: 240px;
+      .motto-box {
+        font-size: 1em;
       }
 
-      .website-links {
-        justify-content: center;
+      .section-card {
+        padding: 25px;
       }
+
+      .section-title {
+        font-size: 1.5em;
+      }
+
+      .timeline {
+        padding-left: 25px;
+      }
+
+      .timeline-item::before {
+        left: -21px;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* 动画效果 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .section-card:nth-child(1) { animation-delay: 0.1s; }
+    .section-card:nth-child(2) { animation-delay: 0.2s; }
+    .section-card:nth-child(3) { animation-delay: 0.3s; }
+    .section-card:nth-child(4) { animation-delay: 0.4s; }
+    .section-card:nth-child(5) { animation-delay: 0.5s; }
+    .section-card:nth-child(6) { animation-delay: 0.6s; }
+
+    /* 滚动条美化 */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
     }
   </style>
 </head>
 <body>
-<header>
-  <h1>欢迎来到伍跃龙的个人主页</h1>
-</header>
+  <div class="container">
+    <!-- 头部横幅 -->
+    <header class="hero-header">
+      <h1>👋 欢迎来到伍跃龙的个人主页</h1>
+      <p class="hero-subtitle">数据科学与大数据技术专业 | 追求卓越 · 热爱生活</p>
+      <span class="hero-badge">🚀 持续学习 · 不断进步</span>
+    </header>
 
-<main>
-  <section class="about">
-    <h2>关于我</h2>
-    <div class="profile">
-      <div class="profile-img">
-        <img src="我.png" alt="伍跃龙的照片">
+    <!-- 关于我 -->
+    <section class="profile-card">
+      <div class="profile-image-container">
+        <img src="我.png" alt="伍跃龙的照片" class="profile-image" onerror="this.src='https://via.placeholder.com/250x333/667eea/ffffff?text=伍跃龙'">
       </div>
-      <div class="profile-info">
-        <p>大家好！我叫<strong>伍跃龙</strong>，今年20岁，是一名数据科学与大数据技术专业的大学生。</p>
-        <p>我的爱好是篮球和音乐，热爱生活，追求卓越。</p>
+      <div class="profile-content">
+        <h2 class="profile-name">你好，我是伍跃龙 👋</h2>
+        <p class="profile-intro">
+          大家好！我叫<strong>伍跃龙</strong>，今年20岁，是一名数据科学与大数据技术专业的大学生。
+          我热爱篮球和音乐，享受生活中的每一刻精彩。始终相信：只要肯努力，
+          没有什么是不可能的！
+        </p>
+        <div class="motto-box">
+          "我可以死在去远方的路上，但不能还没去过远方"
+        </div>
+      </div>
+    </section>
+
+    <!-- 我的技能 -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span class="icon">🎮</span>
+        我的技能与特长
+      </h2>
+      <div class="hobbies-grid">
+        <button class="hobby-btn" data-hobby="game">
+          <span class="hobby-icon">🎮</span>
+          <span class="hobby-name">游戏竞技</span>
+        </button>
+        <button class="hobby-btn" data-hobby="photo">
+          <span class="hobby-icon">📸</span>
+          <span class="hobby-name">摄影设计</span>
+        </button>
+        <button class="hobby-btn" data-hobby="basketball">
+          <span class="hobby-icon">🏀</span>
+          <span class="hobby-name">篮球运动</span>
+        </button>
+        <button class="hobby-btn" data-hobby="music">
+          <span class="hobby-icon">🎵</span>
+          <span class="hobby-name">音乐爱好</span>
+        </button>
+        <button class="hobby-btn" data-hobby="life">
+              <span class="hobby-icon">🌟</span>
+              <span class="hobby-name">生活分享</span>
+            </button>
+      </div>
+    </section>
+
+    <!-- 图片查看弹窗 -->
+    <div id="imageModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3 id="modalTitle" class="modal-title"></h3>
+        <div id="modalImages" class="modal-images"></div>
       </div>
     </div>
 
-    <div class="motto">
-      "我可以死在去远方的路上，但不能还没去过远方"
-    </div>
-  </section>
-
-  <section class="skills">
-    <h2>我的技能</h2>
-    <ul>
-      <li>英雄联盟一区艾欧里亚王者</li>
-      <li>CS2 5E平台魔王S</li>
-      <li>十年火影老玩家，超影3700</li>
-      <li>摄影与PS</li>
-      <li>重科小乔丹，野球场的扛把子</li>
-    </ul>
-  </section>
-
-  <section class="plans">
-    <h2>学习计划</h2>
-    <ol>
-      <li>学习 HTML 基础</li>
-      <li>学习 CSS 样式</li>
-      <li>学习 JavaScript 交互</li>
-      <li>完成一个完整的网站项目</li>
-    </ol>
-  </section>
-
-  <section class="websites">
-    <h2>喜欢的网站</h2>
-    <div class="website-links">
-      <a href="https://www.baidu.com" target="_blank">百度 - 搜索引擎</a>
-      <a href="https://www.bilibili.com" target="_blank">bilibili - 学习视频</a>
-      <a href="https://github.com" target="_blank">GitHub - 代码托管</a>
-    </div>
-  </section>
-
-  <section class="contact">
-    <h2>联系方式</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>联系方式</th>
-        <th>内容</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>邮箱</td>
-        <td>2805744370@qq.com</td>
-      </tr>
-      <tr>
-        <td>电话</td>
-        <td>17888888888</td>
-      </tr>
-      <tr>
-        <td>地址</td>
-        <td>中国重庆市开州区</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="message">
-    <h2>给我留言</h2>
-    <form class="contact-form">
-      <div class="form-group">
-        <label for="name">你的名字：</label>
-        <input type="text" id="name" name="name" required>
+    <!-- 健身计划 -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span class="icon">�</span>
+        健身计划
+      </h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-number">1</span>
+          <span class="timeline-content">
+            <h3 class="timeline-title">胸 + 二头肌</h3>
+          </span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-number">2</span>
+          <span class="timeline-content">
+            <h3 class="timeline-title">背 + 三头肌</h3>
+          </span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-number">3</span>
+          <span class="timeline-content">
+            <h3 class="timeline-title">肩 + 腿</h3>
+          </span>
+        </div>
       </div>
+    </section>
 
-      <div class="form-group">
-        <label for="message">留言内容：</label>
-        <textarea id="message" name="message" required></textarea>
+    <!-- 喜欢的网站 -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span class="icon">🌐</span>
+        喜欢的网站
+      </h2>
+      <div class="website-grid">
+        <a href="https://www.baidu.com" target="_blank" class="website-link">
+          <span class="website-icon">🔍</span>
+          <span>百度 - 搜索引擎</span>
+        </a>
+        <a href="https://www.bilibili.com" target="_blank" class="website-link">
+          <span class="website-icon">📺</span>
+          <span>Bilibili - 学习视频</span>
+        </a>
+        <a href="https://github.com" target="_blank" class="website-link">
+          <span class="website-icon">💻</span>
+          <span>GitHub - 代码托管</span>
+        </a>
       </div>
+    </section>
 
-      <button type="submit">提交留言</button>
-    </form>
-  </section>
-</main>
+    <!-- 联系方式 -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span class="icon">📬</span>
+        联系方式
+      </h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-info">
+            <div class="contact-label">邮箱</div>
+            <div class="contact-value">2805744370@qq.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-info">
+            <div class="contact-label">电话</div>
+            <div class="contact-value">17888888888</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-info">
+            <div class="contact-label">地址</div>
+            <div class="contact-value">中国重庆市开州区</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>© 2024 伍跃龙的个人主页 | 最后更新：2024年</p>
-</footer>
+    <!-- 留言板 -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span class="icon">💬</span>
+        给我留言
+      </h2>
+      <form class="message-form" id="messageForm">
+        <div class="form-group">
+          <label for="name">你的名字</label>
+          <input type="text" id="name" name="name" placeholder="请输入你的名字" required>
+        </div>
+        <div class="form-group">
+          <label for="message">留言内容</label>
+          <textarea id="message" name="message" placeholder="写下你想对我说的话..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">提交留言</button>
+      </form>
+    </section>
 
-<script>
-  document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+    <!-- 页脚 -->
+    <footer>
+      <p>© 2024 <strong>伍跃龙</strong>的个人主页 | 最后更新：2024年</p>
+      <p style="margin-top: 10px;">
+        感谢您的访问！<br>
+        期待与您<a href="mailto:2805744370@qq.com">联系</a>
+      </p>
+    </footer>
+  </div>
 
-    const name = document.getElementById('name').value;
-    const message = document.getElementById('message').value;
+  <script>
+    // 留言表单提交
+    document.getElementById('messageForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    if (name && message) {
-      alert(`感谢 ${name} 的留言！我会尽快查看。`);
-      this.reset();
-    } else {
-      alert('请填写完整的留言信息！');
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name && message) {
+        // 创建动画效果
+        const btn = document.querySelector('.submit-btn');
+        btn.textContent = '提交中...';
+        btn.style.opacity = '0.7';
+
+        setTimeout(() => {
+          alert(`感谢 ${name} 的留言！\n\n我会尽快查看并回复你的消息！`);
+          this.reset();
+          btn.textContent = '提交留言';
+          btn.style.opacity = '1';
+        }, 500);
+      } else {
+        alert('请填写完整的留言信息！');
+      }
+    });
+
+    // 图片加载失败处理（增强版）
+    const profileImage = document.querySelector('.profile-image');
+    if (profileImage) {
+      profileImage.addEventListener('error', function() {
+        this.src = 'https://via.placeholder.com/250x333/667eea/ffffff?text=伍跃龙';
+        this.alt = '照片加载失败，显示默认图片';
+      });
     }
-  });
 
-  // 图片加载失败处理
-  document.querySelector('.profile-img img').addEventListener('error', function() {
-    this.src = 'https://via.placeholder.com/200x270?text=个人照片';
-    this.alt = '照片加载失败，显示默认图片';
-  });
-</script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // 滚动显示动画
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+
+    // 爱好弹窗功能
+    const hobbyData = {
+      game: {
+        title: '🎮 游戏竞技',
+        media: [
+          { type: 'image', src: 'images/game/魔王s.webp', alt: 'CS2 魔王S战绩' },
+          { type: 'image', src: 'images/game/火影十年老玩家.jpg', alt: '火影忍者十周年' },
+          { type: 'image', src: 'images/game/超影3700.jpg', alt: '火影手游超影3700' },
+          { type: 'image', src: 'images/game/千万战力.jpg', alt: '游戏战力' }
+        ],
+        desc: '英雄联盟一区艾欧里亚王者 · CS2 5E平台魔王S · 十年火影老玩家，超影3700'
+      },
+      photo: {
+        title: '📸 摄影设计',
+        media: [
+          { type: 'image', src: 'images/photography/1.JPG', alt: '摄影作品1' },
+          { type: 'image', src: 'images/photography/2.JPG', alt: '摄影作品2' },
+          { type: 'image', src: 'images/photography/3.JPG', alt: '摄影作品3' },
+          { type: 'image', src: 'images/photography/4.JPG', alt: '摄影作品4' }
+        ],
+        desc: '擅长摄影与PS后期处理，记录生活中的美好瞬间，用镜头捕捉每一个精彩时刻。'
+      },
+      basketball: {
+        title: '🏀 篮球运动',
+        media: [
+          { type: 'image', src: 'images/basketball/乔丹1.webp', alt: '乔丹精彩瞬间1' },
+          { type: 'image', src: 'images/basketball/乔丹2.webp', alt: '乔丹精彩瞬间2' },
+          { type: 'image', src: 'images/basketball/乔丹3.webp', alt: '乔丹精彩瞬间3' },
+          { type: 'video', src: 'images/basketball/最帅投篮篮球.MP4', alt: '最帅投篮' }
+        ],
+        desc: '热爱篮球文化 · 关注NBA赛事 · 收藏篮球鞋'
+      },
+      music: {
+        title: '🎵 音乐爱好',
+        media: [
+          { type: 'link', src: 'https://music.apple.com/cn/new', alt: 'Apple Music - 发现新音乐' }
+        ],
+        desc: '热爱音乐，在旋律中寻找灵感和放松，享受不同风格音乐带来的美好体验。'
+      },
+      life: {
+        title: '🌟 生活分享',
+        media: [
+          { type: 'image', src: 'images/life/帅.JPG', alt: '帅气的我' },
+          { type: 'image', src: 'images/life/帅帅帅.JPG', alt: '帅帅帅' },
+          { type: 'image', src: 'images/life/最帅之人侧脸照.JPG', alt: '最帅之人侧脸' },
+          { type: 'image', src: 'images/life/最帅之人健身照.JPG', alt: '健身时刻' },
+          { type: 'image', src: 'images/life/最帅背影.JPG', alt: '最帅背影' },
+          { type: 'image', src: 'images/life/最帅自拍.JPG', alt: '最帅自拍' },
+          { type: 'image', src: 'images/life/神颜.JPG', alt: '神颜' },
+          { type: 'image', src: 'images/life/顶峰之人.JPG', alt: '顶峰之人' },
+          { type: 'image', src: 'images/life/我和二姐.JPG', alt: '我和二姐' },
+          { type: 'image', src: 'images/life/我和妈妈.JPG', alt: '我和妈妈' },
+          { type: 'image', src: 'images/life/我和爷爷.JPG', alt: '我和爷爷' },
+          { type: 'image', src: 'images/life/我和磊磊.JPG', alt: '我和磊磊' },
+          { type: 'image', src: 'images/life/他们俩.JPG', alt: '他们俩' },
+          { type: 'image', src: 'images/life/伍家三少.JPG', alt: '伍家三少' },
+          { type: 'image', src: 'images/life/你看什么.JPG', alt: '你看什么' },
+          { type: 'image', src: 'images/life/吃烧烤的我.JPG', alt: '吃烧烤的我' },
+          { type: 'image', src: 'images/life/吃烧烤的磊磊.JPG', alt: '吃烧烤的磊磊' },
+          { type: 'image', src: 'images/life/哈哈哈.JPG', alt: '哈哈哈' },
+          { type: 'image', src: 'images/life/哈哈哈哈.JPG', alt: '哈哈哈哈' },
+          { type: 'image', src: 'images/life/小屁孩.JPG', alt: '小屁孩' },
+          { type: 'image', src: 'images/life/小涛.JPG', alt: '小涛' },
+          { type: 'image', src: 'images/life/涛（小屁娃时期）.JPG', alt: '涛涛小时候' },
+          { type: 'image', src: 'images/life/磊磊.JPG', alt: '磊磊' },
+          { type: 'image', src: 'images/life/童年1.JPG', alt: '童年1' },
+          { type: 'image', src: 'images/life/童年2.JPG', alt: '童年2' },
+          { type: 'image', src: 'images/life/雪中的我.JPG', alt: '雪中的我' },
+          { type: 'video', src: 'images/life/许凡磊.MP4', alt: '许凡磊' },
+          { type: 'video', src: 'images/life/李涛1.MP4', alt: '李涛' },
+          { type: 'video', src: 'images/life/许通1.MP4', alt: '许通' }
+        ],
+        desc: '热爱生活 · 喜欢分享日常 · 追求有趣的生活方式'
+      }
+    };
+
+    const modal = document.getElementById('imageModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImages = document.getElementById('modalImages');
+    const closeBtn = document.querySelector('.close-btn');
+
+    document.querySelectorAll('.hobby-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const hobby = this.dataset.hobby;
+        const data = hobbyData[hobby];
+        
+        if (data) {
+          modalTitle.innerHTML = `<h3>${data.title}</h3><p style="color: #666; font-size: 0.9em; margin-top: 10px;">${data.desc}</p>`;
+          
+          modalImages.innerHTML = data.media.map(item => {
+             if (item.type === 'video') {
+               return `<video src="${item.src}" class="modal-img" controls onerror="this.poster='https://via.placeholder.com/300x300/667eea/ffffff?text=视频'"></video>`;
+             } else if (item.type === 'link') {
+               return `<a href="${item.src}" target="_blank" class="modal-link">
+                 <span class="link-icon">🎵</span>
+                 <span class="link-text">${item.alt}</span>
+                 <span class="link-arrow">→</span>
+               </a>`;
+             } else {
+               return `<img src="${item.src}" alt="${item.alt}" class="modal-img" onerror="this.src='https://via.placeholder.com/300x300/667eea/ffffff?text=图片'">`;
+             }
+           }).join('');
+          
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', function() {
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    });
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('show')) {
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
 </body>
 </html>
